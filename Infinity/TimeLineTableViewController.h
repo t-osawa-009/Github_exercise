@@ -12,7 +12,7 @@
 #import "TimeLineCell.h"
 #import "DetailViewController.h"
 
-@interface TimeLineTableViewController : UITableViewController
+@interface TimeLineTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
 
 
 @property (nonatomic,copy) NSString *identifier;

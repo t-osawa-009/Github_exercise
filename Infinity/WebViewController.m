@@ -10,6 +10,8 @@
 
 @interface WebViewController ()
 
+
+
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 
@@ -33,6 +35,15 @@
     self.webView.delegate=self;
     NSURLRequest *myRequest=[NSURLRequest requestWithURL:self.openURL];
     [self.webView loadRequest:myRequest];
+    UIImage *img = [UIImage imageNamed:@"UIButtonType2.png"];
+    //ボタンのインスタンスを作成します。
+    UIButton *button = [[UIButton alloc] init];
+    //ボタンに画像を設定します。
+    [button setBackgroundImage:img forState:UIControlStateNormal];
+    //表示するフレームを設定します。
+    button.frame = CGRectMake(10, 10, 50, 30);
+    //ビューへ貼り付けます。
+    [self.view addSubview:button];
 }
 
 - (void)didReceiveMemoryWarning
@@ -63,4 +74,9 @@
 }
 */
 
+- (IBAction)nextButton:(UIButton *)sender {
+}
+
+- (IBAction)backButton:(UIButton *)sender {
+}
 @end

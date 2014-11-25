@@ -38,9 +38,8 @@
     ACAccount *account =[accountStore accountWithIdentifier:self.identifier];
     NSLog(@"account = %@", self.identifier) ;
     
-    NSURL *url = [NSURL URLWithString:@"https://api.twitter.com"
-                  @"/1.1/statuses/home_timeline.json"];
-    NSDictionary *params= @{@"count":@"100",
+    NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
+    NSDictionary *params= @{@"count":@"5",
                              @"trim_user":@"0",
                              @"include_entities":@"0"};
     SLRequest *request =[SLRequest requestForServiceType: SLServiceTypeTwitter
@@ -74,7 +73,7 @@
             }else{
                 self.httpErrorMessage=
                 [NSString stringWithFormat:@"The response status code is %ld",
-                 urlResponse.statusCode];
+                 (long)urlResponse.statusCode];
                 NSLog(@"HTTP Error:%@",self.httpErrorMessage);
                 dispatch_async(dispatch_get_main_queue(), ^{
                     [self.tableView reloadData];
@@ -164,7 +163,6 @@
 
  {
  TimeLineCell *cell = [tableView dequeueReusableCellWithIdentifier:@"TimeLineCell" forIndexPath:indexPath];
- 
  // Configure the cell...
      if(self.httpErrorMessage) {
          cell.tweetTextLabel.text = @"HTTP ErrorMessage";
@@ -173,8 +171,6 @@
          cell.tweetTextLabel.text = @"Loading...";
          cell.tweetTextLabelHeight = 24.0;
      } else {
-
-         
          NSString *tweetText = self.timeLineData[indexPath.row][@"text"];
          NSAttributedString *attributedTweetText = [self labelAttributedString:tweetText];
          
@@ -222,14 +218,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     TimeLineCell *cell = (TimeLineCell *)[tableView cellForRowAtIndexPath:indexPath];
-    
     DetailViewController *detailViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"DetailViewController"];
     detailViewController.name = cell.nameLabel.text;
     detailViewController.text = cell.tweetTextLabel.text;
     detailViewController.image = cell.profileImageView.image;
     detailViewController.identifier = self.identifier;
     detailViewController.idStr = self.timeLineData[indexPath.row][@"id_str"];
-    
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
