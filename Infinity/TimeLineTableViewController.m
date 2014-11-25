@@ -13,7 +13,7 @@
 @property (nonatomic )dispatch_queue_t imageQueue;
 @property (nonatomic,copy)NSString *httpErrorMessage;
 @property (nonatomic,copy)NSArray *timeLineData;
-
+@property (weak, nonatomic) IBOutlet UITableView *postView;
 @end
 
 @implementation TimeLineTableViewController
@@ -29,17 +29,23 @@
 
 - (void)viewDidLoad
 {
+
     [super viewDidLoad];
+    
+    
+    UIRefreshControl * refreshControl = [[UIRefreshControl alloc]init];
+    [refreshControl addTarget:self action:@selector(pullDown:) forControlEvents:UIControlEventValueChanged];
+    [self.tableView addSubview:refreshControl];
+    [self.tableView reloadData];
     self.mainQueue =dispatch_get_main_queue();
     self.imageQueue =dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0);
     [self.tableView registerClass:[TimeLineCell class] forCellReuseIdentifier:@"TimeLineCell"];
-    
     ACAccountStore *accountStore =[[ACAccountStore alloc]init];
     ACAccount *account =[accountStore accountWithIdentifier:self.identifier];
     NSLog(@"account = %@", self.identifier) ;
     
     NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
-    NSDictionary *params= @{@"count":@"5",
+    NSDictionary *params= @{@"count":@"50",
                              @"trim_user":@"0",
                              @"include_entities":@"0"};
     SLRequest *request =[SLRequest requestForServiceType: SLServiceTypeTwitter
@@ -227,7 +233,17 @@
     [self.navigationController pushViewController:detailViewController animated:YES];
 }
 
+- (void)pullDown:(id)sender
+{
+    // 更新開始
+    [sender beginRefreshing];
+    NSLog(@"更新");
+    // 更新終了
+    [self.tableView reloadData];
 
+    [sender endRefreshing];
+   
+}
 
 /*
  // Override to support conditional editing of the table view.
