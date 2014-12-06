@@ -13,6 +13,7 @@
 #import "DetailViewController.h"
 
 @interface TimeLineTableViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *postview;
 
 
 @property (nonatomic,copy) NSString *identifier;

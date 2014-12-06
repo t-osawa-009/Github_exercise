@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="qeq-5N-kvH">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6250" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="qeq-5N-kvH">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6244"/>
     </dependencies>
@@ -13,7 +13,7 @@
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="resize.jpeg" translatesAutoresizingMaskIntoConstraints="NO" id="QEU-PZ-Pr2">
@@ -62,7 +62,7 @@
                                     <color key="titleShadowColor" cocoaTouchSystemColor="lightTextColor"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Xtq-OB-Avf" kind="show" identifier="timeLineSegue" id="BGp-1c-0iz"/>
+                                    <segue destination="Xtq-OB-Avf" kind="push" identifier="timeLineSegue" id="BGp-1c-0iz"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -75,14 +75,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1321.875" y="47.535211267605632"/>
+            <point key="canvasLocation" x="705" y="45"/>
         </scene>
         <!--タイムライン-->
         <scene sceneID="6r1-TG-Zfb">
             <objects>
                 <tableViewController id="Xtq-OB-Avf" customClass="TimeLineTableViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4O1-NU-TBq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -102,13 +102,12 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="タイムライン" id="FaR-Pg-hBX"/>
                     <connections>
-                        <outlet property="postView" destination="4O1-NU-TBq" id="ecP-p4-aaR"/>
-                        <outlet property="tableView" destination="4O1-NU-TBq" id="DNV-AA-RIi"/>
+                        <outlet property="postview" destination="4O1-NU-TBq" id="0ba-T6-9ES"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Gm7-vG-rOh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2056.875" y="-5.28169014084507"/>
+            <point key="canvasLocation" x="1097" y="-5"/>
         </scene>
         <!--Detail View Controller-->
         <scene sceneID="x8H-bo-eeL">
@@ -119,20 +118,17 @@
                         <viewControllerLayoutGuide type="bottom" id="vKs-Rv-7vK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FN0-OH-zG8">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvE-MH-Vp6"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fvE-MH-Vp6">
+                                <rect key="frame" x="35" y="70" width="50" height="50"/>
+                            </imageView>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F48-Pj-Gvl">
+                                <rect key="frame" x="35" y="131" width="250" height="50"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hS3-f6-sE7">
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcC-vz-Xmy">
                                 <rect key="frame" x="195" y="488" width="81" height="30"/>
@@ -143,6 +139,13 @@
                                     <action selector="retwwetView:" destination="OI0-ak-bYX" eventType="touchUpInside" id="U0e-g5-0JK"/>
                                 </connections>
                             </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hS3-f6-sE7">
+                                <rect key="frame" x="35" y="200" width="250" height="290"/>
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <dataDetectorType key="dataDetectorTypes" link="YES"/>
+                            </textView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -154,7 +157,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWW-Yy-OfF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2463.75" y="763.73239436619713"/>
+            <point key="canvasLocation" x="1265" y="755"/>
         </scene>
         <!--Web View Controller-->
         <scene sceneID="3yw-WN-3Ep">
@@ -165,10 +168,11 @@
                         <viewControllerLayoutGuide type="bottom" id="g3E-8a-B2j"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Voq-ok-tgr">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SmE-gs-T4w">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="531"/>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             </webView>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lRS-kk-gpC">
@@ -211,7 +215,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DEv-kD-Bhn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1678.125" y="852.46478873239425"/>
+            <point key="canvasLocation" x="895" y="806"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="5F5-ca-Hoc">
@@ -229,7 +233,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6UR-z1-Tvx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="335.625" y="47.535211267605632"/>
+            <point key="canvasLocation" x="179" y="45"/>
         </scene>
     </scenes>
     <resources>
@@ -240,4 +244,9 @@
         <image name="resize.jpeg" width="280" height="420"/>
         <image name="twitter-bird.png" width="48" height="48"/>
     </resources>
+    <simulatedMetricsContainer key="defaultSimulatedMetrics">
+        <simulatedStatusBarMetrics key="statusBar"/>
+        <simulatedOrientationMetrics key="orientation"/>
+        <simulatedScreenMetrics key="destination" type="retina4"/>
+    </simulatedMetricsContainer>
 </document>
