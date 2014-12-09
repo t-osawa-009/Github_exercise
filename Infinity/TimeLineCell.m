@@ -48,9 +48,10 @@
 -(void)layoutSubviews
 {
     [super layoutSubviews];
-    self.profileImageView.frame =CGRectMake(5, 5, 48, 48);
-    self.tweetTextLabel.frame =CGRectMake(58, 5, 257, self.tweetTextLabelHeight);
-    self.nameLabel.frame=CGRectMake(58,self.tweetTextLabelHeight+15 , 257, 15);
+    CGRect r1 = [[UIScreen mainScreen] bounds];
+    self.profileImageView.frame =CGRectMake(5 * (r1.size.width/320), 5 * (r1.size.height/568), 48 * (r1.size.width/320), 45 * (r1.size.height/568));
+    self.tweetTextLabel.frame =CGRectMake(58 * (r1.size.width/320), 5 * (r1.size.height/568), 257 * (r1.size.width/320), self.tweetTextLabelHeight);
+    self.nameLabel.frame=CGRectMake(58 * (r1.size.width/320),self.tweetTextLabelHeight+15 * (r1.size.height/568) , 257 * (r1.size.width/320), 15 * (r1.size.height/568));
 }
 
 @end

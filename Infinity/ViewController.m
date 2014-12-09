@@ -22,7 +22,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    // Do any additional setup after loading the view, typically from a nib.
     self.accountStore =[[ACAccountStore alloc]init];
     ACAccountType *twitterType =
     [self.accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
@@ -58,6 +58,7 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
 - (IBAction)tweet:(id)sender {
     if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
         NSString *serviceType= SLServiceTypeTwitter;

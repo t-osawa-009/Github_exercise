@@ -35,6 +35,8 @@
     self.webView.delegate=self;
     NSURLRequest *myRequest=[NSURLRequest requestWithURL:self.openURL];
     [self.webView loadRequest:myRequest];
+    CGRect r1 = [[UIScreen mainScreen] applicationFrame];
+    self.webView.frame = CGRectMake(0, 0,r1.size.width , r1.size.height);
     UIImage *img = [UIImage imageNamed:@"UIButtonType2.png"];
     //ボタンのインスタンスを作成します。
     UIButton *button = [[UIButton alloc] init];

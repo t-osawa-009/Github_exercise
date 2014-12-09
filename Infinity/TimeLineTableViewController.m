@@ -27,10 +27,7 @@
     return self;
 }
 
-- (void)viewDidLoad
-{
-
-    [super viewDidLoad];
+-(void)timeLineView{
     [_postview setDelegate:self];
     [_postview setDataSource:self];
     
@@ -47,8 +44,8 @@
     
     NSURL *url = [NSURL URLWithString:@"https://api.twitter.com/1.1/statuses/home_timeline.json"];
     NSDictionary *params= @{@"count":@"50",
-                             @"trim_user":@"0",
-                             @"include_entities":@"0"};
+                            @"trim_user":@"0",
+                            @"include_entities":@"0"};
     SLRequest *request =[SLRequest requestForServiceType: SLServiceTypeTwitter
                                            requestMethod:SLRequestMethodGET
                                                      URL:url
@@ -98,7 +95,14 @@
             }
         });
     }];
+
 }
+- (void)viewDidLoad
+{
+
+    [super viewDidLoad];
+    [self timeLineView];
+    }
 
     -(NSAttributedString *)labelAttributedString:(NSString *)labelString
     {
@@ -219,7 +223,9 @@
     NSString *tweetText = self.timeLineData[indexPath.row][@"text"];
     NSAttributedString *attributedTweetText = [self labelAttributedString:tweetText];
     CGFloat tweetTextLabelHeight = [self labelHeight:attributedTweetText];
-    return  tweetTextLabelHeight +35;
+    CGRect r1 = [[UIScreen mainScreen] bounds];
+
+    return  tweetTextLabelHeight +35 * (r1.size.height/568);
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -237,17 +243,19 @@
 - (void)pullDown:(id)sender
 {
     // 更新開始
+   
     [sender beginRefreshing];
+    [self.tableView beginUpdates];
     NSLog(@"更新");
     // 更新終了
-    [_postview reloadData];
-
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self timeLineView];
+            });
     
-
+    [self.tableView endUpdates];
     [sender endRefreshing];
-   
-}
-
+    [self.tableView reloadData];
+    }
 /*
  // Override to support conditional editing of the table view.
  - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
@@ -296,5 +304,4 @@
  // Pass the selected object to the new view controller.
  }
  */
-
 @end
