@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-
+#import "VENSnowOverlayView.h"
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *accountDisplayLabel;
 
@@ -58,21 +58,11 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-- (IBAction)tweet:(id)sender {
-    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
-        NSString *serviceType= SLServiceTypeTwitter;
-        SLComposeViewController *composeCtl=
-        [SLComposeViewController composeViewControllerForServiceType:serviceType];
-        [composeCtl setCompletionHandler:^(SLComposeViewControllerResult result){
-            if (result == SLComposeViewControllerResultDone) {
-                
-                
-            }
-        }];
-        [self presentViewController:composeCtl animated: YES completion:nil];
-        
-    }
+-(void)viewWillAppear:(BOOL)animated{
+    [super viewWillAppear:animated];
+    VENSnowOverlayView *snowOverlay = [[VENSnowOverlayView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:snowOverlay];
+    [snowOverlay beginSnowAnimation];
 }
 - (IBAction)setAccountAction:(id)sender {
     UIActionSheet *sheet=[[UIActionSheet alloc]init];

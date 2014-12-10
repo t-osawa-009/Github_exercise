@@ -11,8 +11,10 @@
 @interface DetailViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *imageView;
 @property (weak, nonatomic) IBOutlet UITextView *profilView;
+
 @property (weak, nonatomic) IBOutlet UITextView *timeLineView;
 
+@property (weak, nonatomic) IBOutlet UILabel *profileLabel;
 
 @end
 
@@ -31,11 +33,12 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.navigationItem.title = @"Detail View";
+        self.navigationItem.title = @"Detail View";
     self.imageView.image=self.image;
     self.profilView.text = self.name;
+    self.profileLabel.text = self.name;
     self.timeLineView.text = self.text;
-}
+    }
 
 - (void)didReceiveMemoryWarning
 {

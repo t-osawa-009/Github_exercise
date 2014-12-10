@@ -1,0 +1,10 @@
+PODS:
+  - VENSnowOverlayView (0.1.1)
+
+DEPENDENCIES:
+  - VENSnowOverlayView (~> 0.1.0)
+
+SPEC CHECKSUMS:
+  VENSnowOverlayView: ab38eef443f4031be68d1cec4a13a657cbdfd7a4
+
+COCOAPODS: 0.35.0

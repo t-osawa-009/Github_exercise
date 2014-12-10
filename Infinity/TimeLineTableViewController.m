@@ -26,6 +26,22 @@
     }
     return self;
 }
+- (IBAction)postTweet:(id)sender {
+    if ([SLComposeViewController isAvailableForServiceType:SLServiceTypeTwitter]) {
+        NSString *serviceType= SLServiceTypeTwitter;
+        SLComposeViewController *composeCtl=
+        [SLComposeViewController composeViewControllerForServiceType:serviceType];
+        [composeCtl setCompletionHandler:^(SLComposeViewControllerResult result){
+            if (result == SLComposeViewControllerResultDone) {
+                
+                
+            }
+        }];
+        [self presentViewController:composeCtl animated: YES completion:nil];
+        
+    }
+
+}
 
 -(void)timeLineView{
     [_postview setDelegate:self];
