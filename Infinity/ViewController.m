@@ -8,13 +8,14 @@
 
 #import "ViewController.h"
 #import "VENSnowOverlayView.h"
+#import <QuartzCore/QuartzCore.h>
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet UILabel *accountDisplayLabel;
 
 @property(nonatomic,strong)ACAccountStore *accountStore;
 @property(nonatomic,copy)NSArray *twitterAccounts;
 @property(nonatomic,copy)NSString *identifier;
-
+@property(nonatomic,copy)VENSnowOverlayView *snowOver;
 @end
 
 @implementation ViewController
@@ -60,9 +61,24 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [super viewWillAppear:animated];
-    VENSnowOverlayView *snowOverlay = [[VENSnowOverlayView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:snowOverlay];
-    [snowOverlay beginSnowAnimation];
+
+    
+}
+-(void)viewDidAppear:(BOOL)animated{
+    [super viewDidAppear:animated];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _snowOver = [[VENSnowOverlayView alloc] initWithFrame:self.view.frame];
+        _snowOver.flakesCount = 100;
+        [self.view addSubview:_snowOver];
+        [_snowOver beginSnowAnimation];
+    });
+
+}
+-(void)viewDidDisappear:(BOOL)animated{
+    [super viewDidDisappear:animated];
+
+    [_snowOver removeFromSuperview];
+    
 }
 - (IBAction)setAccountAction:(id)sender {
     UIActionSheet *sheet=[[UIActionSheet alloc]init];
