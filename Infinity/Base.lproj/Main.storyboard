@@ -172,7 +172,6 @@
                             <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UcC-vz-Xmy">
                                 <rect key="frame" x="195" y="488" width="81" height="30"/>
                                 <state key="normal" title="リツイート">
-                                    <color key="titleColor" red="0.24896078490000001" green="1" blue="0.15081905640000001" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -267,29 +266,43 @@
                         <subviews>
                             <webView contentMode="scaleAspectFit" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SmE-gs-T4w">
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="8" y="15" width="375" height="520"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="375" id="Dog-0F-n4i"/>
+                                    <constraint firstAttribute="height" constant="520" id="qdo-RC-UsO"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Dog-0F-n4i"/>
+                                        <exclude reference="qdo-RC-UsO"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Dog-0F-n4i"/>
+                                        <include reference="qdo-RC-UsO"/>
+                                    </mask>
                                 </variation>
                             </webView>
-                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AsW-vc-Vkb">
-                                <rect key="frame" x="20" y="532" width="70" height="30"/>
-                                <state key="normal" image="arrow-left.png">
-                                    <attributedString key="attributedTitle"/>
-                                </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="16" y="572" width="70" height="30"/>
-                                </variation>
-                                <connections>
-                                    <action selector="goBack" destination="SmE-gs-T4w" eventType="touchUpInside" id="44O-sX-pcs"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DUd-NA-AeZ">
                                 <rect key="frame" x="125" y="532" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="110" id="Ubp-hn-Tra"/>
+                                    <constraint firstAttribute="height" constant="48" id="ZIt-EV-RTS"/>
+                                </constraints>
                                 <state key="normal" image="arrow-right.png">
                                     <attributedString key="attributedTitle"/>
                                 </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="150" y="563" width="110" height="48"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ubp-hn-Tra"/>
+                                        <exclude reference="ZIt-EV-RTS"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Ubp-hn-Tra"/>
+                                        <include reference="ZIt-EV-RTS"/>
+                                    </mask>
                                 </variation>
                                 <connections>
                                     <action selector="goForward" destination="SmE-gs-T4w" eventType="touchUpInside" id="gDn-2e-LJj"/>
@@ -297,11 +310,24 @@
                             </button>
                             <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y3f-mk-Q7g">
                                 <rect key="frame" x="229" y="532" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Q1u-sg-wyc"/>
+                                    <constraint firstAttribute="height" constant="30" id="XEE-V4-6Hd"/>
+                                </constraints>
                                 <state key="normal" image="refresh.png">
                                     <attributedString key="attributedTitle"/>
                                 </state>
-                                <variation key="widthClass=compact" fixedFrame="YES">
-                                    <rect key="frame" x="319" y="572" width="70" height="30"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Q1u-sg-wyc"/>
+                                        <exclude reference="XEE-V4-6Hd"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Q1u-sg-wyc"/>
+                                        <include reference="XEE-V4-6Hd"/>
+                                    </mask>
                                 </variation>
                                 <connections>
                                     <action selector="reload" destination="SmE-gs-T4w" eventType="touchUpInside" id="zdc-1L-byr"/>
@@ -313,8 +339,91 @@
                                     <rect key="frame" x="185" y="290" width="20" height="20"/>
                                 </variation>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleAspectFit" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AsW-vc-Vkb">
+                                <rect key="frame" x="20" y="532" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Ky6-Tj-Vjk"/>
+                                    <constraint firstAttribute="height" constant="30" id="why-Ck-Q2u"/>
+                                </constraints>
+                                <state key="normal" image="arrow-left.png">
+                                    <attributedString key="attributedTitle"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Ky6-Tj-Vjk"/>
+                                        <exclude reference="why-Ck-Q2u"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Ky6-Tj-Vjk"/>
+                                        <include reference="why-Ck-Q2u"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="goBack" destination="SmE-gs-T4w" eventType="touchUpInside" id="44O-sX-pcs"/>
+                                </connections>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="DUd-NA-AeZ" firstAttribute="leading" secondItem="AsW-vc-Vkb" secondAttribute="trailing" constant="65" id="4yt-EY-9Se"/>
+                            <constraint firstItem="DUd-NA-AeZ" firstAttribute="leading" secondItem="AsW-vc-Vkb" secondAttribute="trailing" constant="65" id="9fp-39-ohh"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Y3f-mk-Q7g" secondAttribute="trailing" constant="-4" id="Bda-fa-7uB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SmE-gs-T4w" secondAttribute="trailing" constant="-4" id="Erg-i3-Ba0"/>
+                            <constraint firstItem="DUd-NA-AeZ" firstAttribute="top" secondItem="SmE-gs-T4w" secondAttribute="bottom" constant="19" id="Liw-a9-4lt"/>
+                            <constraint firstItem="Y3f-mk-Q7g" firstAttribute="leading" secondItem="DUd-NA-AeZ" secondAttribute="trailing" constant="57" id="Mm8-5F-CVN"/>
+                            <constraint firstItem="g3E-8a-B2j" firstAttribute="top" secondItem="Y3f-mk-Q7g" secondAttribute="bottom" constant="8" id="WoB-gK-Xb0"/>
+                            <constraint firstItem="SmE-gs-T4w" firstAttribute="top" secondItem="Voq-ok-tgr" secondAttribute="topMargin" constant="15" id="ZJB-Um-mZc"/>
+                            <constraint firstItem="AsW-vc-Vkb" firstAttribute="leading" secondItem="Voq-ok-tgr" secondAttribute="leadingMargin" id="aeG-7x-75z"/>
+                            <constraint firstItem="g3E-8a-B2j" firstAttribute="top" secondItem="AsW-vc-Vkb" secondAttribute="bottom" constant="7" id="ffZ-63-7qc"/>
+                            <constraint firstItem="DUd-NA-AeZ" firstAttribute="top" secondItem="SmE-gs-T4w" secondAttribute="bottom" constant="19" id="o6n-Sm-Swu"/>
+                            <constraint firstItem="Y3f-mk-Q7g" firstAttribute="top" secondItem="SmE-gs-T4w" secondAttribute="bottom" constant="27" id="ssi-ca-EB9"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="DUd-NA-AeZ" secondAttribute="bottom" constant="-2" id="tGi-UL-JSw"/>
+                            <constraint firstItem="SmE-gs-T4w" firstAttribute="leading" secondItem="Voq-ok-tgr" secondAttribute="leadingMargin" constant="-3" id="tcg-BM-ky3"/>
+                            <constraint firstItem="AsW-vc-Vkb" firstAttribute="top" secondItem="SmE-gs-T4w" secondAttribute="bottom" constant="28" id="wRA-Oy-z8S"/>
+                            <constraint firstItem="Y3f-mk-Q7g" firstAttribute="leading" secondItem="DUd-NA-AeZ" secondAttribute="trailing" constant="57" id="zRv-VJ-Jo7"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Erg-i3-Ba0"/>
+                                <exclude reference="ZJB-Um-mZc"/>
+                                <exclude reference="tcg-BM-ky3"/>
+                                <exclude reference="aeG-7x-75z"/>
+                                <exclude reference="wRA-Oy-z8S"/>
+                                <exclude reference="4yt-EY-9Se"/>
+                                <exclude reference="9fp-39-ohh"/>
+                                <exclude reference="Liw-a9-4lt"/>
+                                <exclude reference="o6n-Sm-Swu"/>
+                                <exclude reference="tGi-UL-JSw"/>
+                                <exclude reference="WoB-gK-Xb0"/>
+                                <exclude reference="ffZ-63-7qc"/>
+                                <exclude reference="Bda-fa-7uB"/>
+                                <exclude reference="Mm8-5F-CVN"/>
+                                <exclude reference="ssi-ca-EB9"/>
+                                <exclude reference="zRv-VJ-Jo7"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="constraints">
+                                <include reference="Erg-i3-Ba0"/>
+                                <include reference="ZJB-Um-mZc"/>
+                                <include reference="tcg-BM-ky3"/>
+                                <include reference="aeG-7x-75z"/>
+                                <include reference="wRA-Oy-z8S"/>
+                                <exclude reference="4yt-EY-9Se"/>
+                                <include reference="9fp-39-ohh"/>
+                                <include reference="Liw-a9-4lt"/>
+                                <exclude reference="o6n-Sm-Swu"/>
+                                <include reference="tGi-UL-JSw"/>
+                                <include reference="WoB-gK-Xb0"/>
+                                <include reference="ffZ-63-7qc"/>
+                                <include reference="Bda-fa-7uB"/>
+                                <include reference="Mm8-5F-CVN"/>
+                                <include reference="ssi-ca-EB9"/>
+                                <exclude reference="zRv-VJ-Jo7"/>
+                            </mask>
+                        </variation>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="400" height="600"/>
